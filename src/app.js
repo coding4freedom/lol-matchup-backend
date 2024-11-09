@@ -10,7 +10,7 @@ app.get('/', (req, res) => {
     res.send('Hello The server is Up!');
 });
 
-app.use('/api', getNamesRoutes);
+app.use(getNamesRoutes);
 
 // set the port
 const PORT = process.env.PORT || 3000;
