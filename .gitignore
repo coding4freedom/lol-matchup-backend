@@ -4,3 +4,11 @@ node_modules/
 
 # dotenv environment variable files
 .env
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+
+# playwright test samples
+/tests
+/tests-examples

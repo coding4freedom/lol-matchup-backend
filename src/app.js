@@ -8,9 +8,8 @@ const getNamesRoutes = require('./routes/getNamesRoutes.js');
 
 // Configure CORS to allow frontend app to interface with this project
 const corsOptions = {
-    origin: 'http://localhost:3000',
-    methods: ['GET'],
-    credentials: true,
+    origin: 'http://localhost:5173',
+    methods: ['GET'],    
 }
 
 // Set up Basic route for testing server
