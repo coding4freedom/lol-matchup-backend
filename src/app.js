@@ -1,9 +1,12 @@
 
 const express = require('express');
+const path = require('path');
 const cors = require('cors');
 
 // Create an Express app instance
 const app = express();
+
+// route imported
 const getNamesRoutes = require('./routes/getNamesRoutes.js');
 
 // Configure CORS to allow frontend app to interface with this project
@@ -21,6 +24,8 @@ app.get('/', (req, res) => {
 app.use(cors(corsOptions));
 
 app.use(getNamesRoutes);
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 // set the port
 const PORT = process.env.PORT || 3000;

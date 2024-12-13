@@ -1,5 +1,10 @@
 
 const { chromium} = require('playwright');
+const fs = require('fs');
+const path = require('path');
+
+// create the path location for the champ json list
+const champListFilePath = path.join(__dirname, '../public', 'champList.json');
 
 // Service function to get names from site
 exports.getNames = async () => {
@@ -36,7 +41,12 @@ exports.getNames = async () => {
             }
         }
 
-        console.log(namesText);
+        console.log('Champs found: ', namesText);
+
+        // save the champList.json
+        fs.writeFileSync(champListFilePath, JSON.stringify(namesText, null, 2));
+        console.log('Champs list saved to json file!')
+
         return namesText;
 
     } catch (error) {
