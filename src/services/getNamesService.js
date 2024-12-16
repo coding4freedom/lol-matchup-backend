@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 
 // create the path location for the champ json list
-const champListFilePath = path.join(__dirname, '../public', 'champList.json');
+const champListFilePath = path.join(__dirname, '../..', 'public', 'champList.json');
 
 // Service function to get names from site
 exports.getNames = async () => {
@@ -43,9 +43,18 @@ exports.getNames = async () => {
 
         console.log('Champs found: ', namesText);
 
-        // save the champList.json
-        fs.writeFileSync(champListFilePath, JSON.stringify(namesText, null, 2));
-        console.log('Champs list saved to json file!')
+        try {
+            // save the champList.json
+            if (namesText) { 
+                fs.writeFileSync(champListFilePath, JSON.stringify(namesText, null, 2));
+                console.log('Champs list saved to json file!')
+            }
+            
+        } catch (error) {
+            console.error('Error while trying to write to file: ', error);
+            throw new Error('Error duing writing to file');
+        }
+        
 
         return namesText;
 
